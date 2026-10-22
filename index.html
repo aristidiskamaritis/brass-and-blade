@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Brass &amp; Blade Barbershop (Demo Website) | Barbershop website concept by AK Web Dev</title>
+  <meta name="description" content="Demo website, not a real barbershop. Brass & Blade is a concept site for a barbershop in Larnaca, designed and built by AK Web Dev to show what a business website can look like.">
+  <meta name="theme-color" content="#0F0E0C">
+
+  <!-- Open Graph (link previews on Facebook / Viber / WhatsApp / Messenger) -->
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://akwebdev.com/brass-and-blade/">
+  <meta property="og:url" content="https://akwebdev.com/brass-and-blade/">
+  <meta property="og:title" content="Brass &amp; Blade Barbershop (Demo Website) | Barbershop website concept by AK Web Dev">
+  <meta property="og:description" content="Demo website, not a real barbershop. A barbershop website concept with online booking, designed and built by AK Web Dev.">
+  <meta property="og:image" content="https://akwebdev.com/brass-and-blade/images/og-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="images/favicon-48.png" type="image/png" sizes="48x48">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=78" imagesrcset="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&h=1400&q=72 900w, https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=78 1600w, https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=2400&q=76 2400w" imagesizes="100vw" fetchpriority="high">
+
+  <link rel="stylesheet" href="css/style.css?v=1">
+
+  <script>
+    document.documentElement.classList.add("js");
+    // ?motion=1 forces animations even when the device asks for reduced motion
+    if (/[?&]motion=1/.test(location.search)) document.documentElement.classList.add("force-motion");
+    // The short intro plays once per visit
+    try { if (sessionStorage.getItem("bb-intro")) document.documentElement.classList.add("no-intro"); } catch (e) {}
+    // If the page script never runs, show everything instead of leaving reveals hidden
+    setTimeout(function () { if (!window.__bbReady) document.documentElement.classList.remove("js"); }, 4000);
+  </script>
+
+  <!-- Demo site: describe it to Google as a portfolio piece, not as a real business -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Brass & Blade Barbershop (Demo Website)",
+    "description": "Demo website, not a real barbershop. Brass & Blade is a concept site for a barbershop in Larnaca, designed and built by AK Web Dev to show what a business website can look like.",
+    "url": "https://akwebdev.com/brass-and-blade/",
+    "isPartOf": { "@type": "WebSite", "name": "AK Web Dev", "url": "https://akwebdev.com/" },
+    "creator": { "@type": "Person", "name": "Aristeidis Kamaritis", "url": "https://akwebdev.com/" }
+  }
+  </script>
+</head>
+<body>
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <linearGradient id="g-brass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E9CF96"/><stop offset=".5" stop-color="#C8A165"/><stop offset="1" stop-color="#94723E"/></linearGradient>
+    </defs>
+    <symbol id="i-mark" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="30" fill="none" stroke="url(#g-brass)" stroke-width="2.2"/>
+      <circle cx="32" cy="32" r="25.6" fill="none" stroke="url(#g-brass)" stroke-width=".8" opacity=".6"/>
+      <g transform="translate(-1.2 1.6) rotate(-40 32 32)">
+        <path class="mk-blade" d="M31 25.6H52.2Q56.4 25.6 56.4 29.6V31.4Q56.4 35.4 52 35.4Q42 34 33.4 33.6Q31 33.5 31 31.2Z" fill="url(#g-brass)"/>
+        <path d="M26 27.2H31.4V31.2Q28.6 31.2 27.6 33.2Q27 31.2 26 31Z" fill="url(#g-brass)"/>
+        <path d="M27 27.6L8.2 24.4Q5.4 24 5.4 26.6Q5.4 28.9 8 29.2L27 31.4Z" fill="none" stroke="url(#g-brass)" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="27.4" cy="29.4" r="1.4" fill="#0F0E0C" stroke="url(#g-brass)" stroke-width="1"/>
+      </g>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5V12l3 2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.8 2.8 5.8 6.3.8-4.6 4.4 1.1 6.3L12 17.1l-5.6 3 1.1-6.3L2.9 9.4l6.3-.8z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.7-6.5-11a6.5 6.5 0 0 1 13 0c0 5.3-6.5 11-6.5 11Z" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></symbol>
+    <symbol id="i-car" viewBox="0 0 24 24"><path d="M5 16V12l1.8-4.6A2 2 0 0 1 8.7 6h6.6a2 2 0 0 1 1.9 1.4L19 12v4M5 16h14M5 16v2M19 16v2M5 12h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="14" r=".9" fill="currentColor"/><circle cx="16" cy="14" r=".9" fill="currentColor"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v5.5c0 4.4 3 8 7 9.5 4-1.5 7-5.1 7-9.5V6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2.2 2.2L15.5 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3.5" y="8.5" width="17" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M5 12.5V20h14v-7.5M12 8.5V20M12 8.5S10.8 4 8.3 4.6C6.5 5 7 8.5 12 8.5ZM12 8.5s1.2-4.5 3.7-3.9c1.8.4 1.3 3.9-3.7 3.9Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3.5 10h17M8 3v4M16 3v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  </svg>
+
+  <!-- Intro: the razor opens, the curtain lifts (once per visit, under a second) -->
+  <div class="intro" aria-hidden="true">
+    <div class="intro-inner">
+      <svg class="intro-mark"><use href="#i-mark"/></svg>
+      <span class="intro-word">Brass <em>&amp;</em> Blade</span>
+    </div>
+  </div>
+
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#home" class="logo" aria-label="Brass &amp; Blade, home">
+        <svg class="logo-mark" aria-hidden="true"><use href="#i-mark"/></svg>
+        <span class="logo-text"><span class="logo-name">Brass <em>&amp;</em> Blade</span><small data-i18n="brand.sub">Barbershop · Larnaca</small></span>
+      </a>
+
+      <nav class="main-nav" id="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="#services" data-i18n="nav.services">Services</a></li>
+          <li><a href="#packages" data-i18n="nav.packages">Packages</a></li>
+          <li><a href="#barbers" data-i18n="nav.barbers">Barbers</a></li>
+          <li><a href="#kit" data-i18n="nav.kit">The Kit</a></li>
+          <li><a href="#gallery" data-i18n="nav.gallery">Gallery</a></li>
+          <li><a href="#visit" data-i18n="nav.visit">Visit</a></li>
+        </ul>
+        <a href="#book" class="btn btn-brass nav-cta-mobile" data-i18n="nav.book">Book now</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <span class="lang-pill" aria-hidden="true"></span>
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="el" aria-pressed="false">ΕΛ</button>
+        </div>
+        <a href="#book" class="btn btn-brass btn-sm header-cta" data-i18n="nav.book">Book now</a>
+        <button class="nav-toggle" type="button" aria-controls="main-nav" aria-expanded="false" data-i18n-label="nav.menu" aria-label="Menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true">
+        <img class="hero-img" src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=78"
+             srcset="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=900&h=1400&q=72 900w, https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1600&q=78 1600w, https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=2400&q=76 2400w"
+             sizes="100vw" alt="" fetchpriority="high">
+        <span class="hero-shade"></span>
+        <span class="hero-grain"></span>
+      </div>
+
+      <div class="container hero-content">
+        <a class="demo-sign" href="https://akwebdev.com/" target="_blank" rel="noopener">
+          <span class="demo-sign-title" data-i18n="demo.title">Demo website</span>
+          <span class="demo-sign-text" data-i18n="demo.text">Not a real barbershop. Designed and built by AK Web Dev →</span>
+        </a>
+        <p class="hero-eyebrow" data-anim="fade"><span class="rule"></span><span data-i18n="hero.eyebrow">Est. 2016 · Larnaca, Cyprus</span></p>
+        <h1 id="hero-title" class="hero-title">
+          <span class="line"><span data-i18n="hero.line1">Sharp cuts.</span></span>
+          <span class="line"><em data-i18n="hero.line2">Old-school craft.</em></span>
+        </h1>
+        <p class="hero-lead" data-anim="fade" data-i18n="hero.lead">Fades, scissor cuts and hot towel shaves by four barbers who never rush. Book your chair online in under a minute.</p>
+        <div class="hero-ctas" data-anim="fade">
+          <a href="#book" class="btn btn-brass btn-lg magnetic"><span data-i18n="hero.cta1">Book an appointment</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+          <a href="#services" class="btn btn-ghost btn-lg" data-i18n="hero.cta2">See prices</a>
+        </div>
+        <div class="hero-live" data-anim="fade">
+          <p class="status-pill" id="open-status" aria-live="polite"><span class="dot"></span><span class="status-text">&nbsp;</span></p>
+          <p class="status-pill next-pill" id="next-free"><svg class="ico"><use href="#i-clock"/></svg><span class="next-text">&nbsp;</span></p>
+        </div>
+      </div>
+
+      <div class="container hero-stats" data-anim="fade">
+        <dl>
+          <div><dt><span data-count="4.9" data-decimals="1">4.9</span><svg class="ico star"><use href="#i-star"/></svg></dt><dd data-i18n="hero.s1">Google rating</dd></div>
+          <div><dt><span data-count="10">10</span></dt><dd data-i18n="hero.s2">Years in Larnaca</dd></div>
+          <div><dt><span data-count="4">4</span></dt><dd data-i18n="hero.s3">Master barbers</dd></div>
+          <div><dt><span data-count="48" data-suffix="k+">48k+</span></dt><dd data-i18n="hero.s4">Cuts and counting</dd></div>
+        </dl>
+        <a href="#about" class="scroll-cue" aria-hidden="true" tabindex="-1"><span data-i18n="hero.scroll">Scroll</span><i></i></a>
+      </div>
+    </section>
+
+    <!-- Ticker -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <div class="ticker-set"><span data-i18n="tick.1">Skin fades</span><i></i><span data-i18n="tick.2">Hot towel shaves</span><i></i><span data-i18n="tick.3">Beard sculpting</span><i></i><span data-i18n="tick.4">Scissor cuts</span><i></i><span data-i18n="tick.5">Kids cuts</span><i></i><span data-i18n="tick.6">Walk-ins welcome</span><i></i></div>
+        <div class="ticker-set"><span data-i18n="tick.1">Skin fades</span><i></i><span data-i18n="tick.2">Hot towel shaves</span><i></i><span data-i18n="tick.3">Beard sculpting</span><i></i><span data-i18n="tick.4">Scissor cuts</span><i></i><span data-i18n="tick.5">Kids cuts</span><i></i><span data-i18n="tick.6">Walk-ins welcome</span><i></i></div>
+      </div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <div class="about-copy">
+          <p class="eyebrow reveal" data-i18n="about.eyebrow">The shop</p>
+          <h2 id="about-title" class="reveal" data-i18n="about.title">A proper barbershop. <em>No rush, no shortcuts.</em></h2>
+          <p class="reveal" data-i18n="about.p1">Brass &amp; Blade opened in 2016 on a quiet corner of old Larnaca, with one chair, one razor and a simple idea: give every man the time a good haircut deserves.</p>
+          <p class="reveal" data-i18n="about.p2">Today there are four of us, but nothing else has changed. Every appointment starts with a conversation, every tool is sterilised between clients, and the coffee is always on.</p>
+          <p class="signature reveal"><span class="sig-script">Nikos</span><span data-i18n="about.sign">Nikos Charalambous, founder</span></p>
+          <ul class="about-feats">
+            <li class="reveal"><svg class="ico"><use href="#i-cal"/></svg><span data-i18n="about.f1">Online booking, 24/7</span></li>
+            <li class="reveal"><svg class="ico"><use href="#i-shield"/></svg><span data-i18n="about.f2">Sterilised tools, every client</span></li>
+            <li class="reveal"><svg class="ico"><use href="#i-star"/></svg><span data-i18n="about.f3">Coffee, beer or whisky on us</span></li>
+            <li class="reveal"><svg class="ico"><use href="#i-check"/></svg><span data-i18n="about.f4">Kids and walk-ins welcome</span></li>
+          </ul>
+        </div>
+        <div class="about-visual">
+          <figure class="about-img a1 clip-reveal">
+            <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=900&h=1100&q=78" width="900" height="1100" alt="A tattooed barber finishing a fade with a straight razor" loading="lazy" decoding="async">
+          </figure>
+          <figure class="about-img a2 clip-reveal">
+            <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=700&h=700&q=78" width="700" height="700" alt="A client relaxing in the chair during a straight-razor shave" loading="lazy" decoding="async">
+          </figure>
+          <img class="about-badge" src="images/logo-badge.svg" width="240" height="240" alt="" aria-hidden="true">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES (price list) ============ -->
+    <section class="section services paper" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="svc.eyebrow">Price list</p>
+          <h2 id="services-title" data-i18n="svc.title">Services</h2>
+          <p class="section-lead" data-i18n="svc.lead">Every service includes a consultation and a hot-towel finish. Prices in euro, paid in the shop.</p>
+        </header>
+
+        <div class="svc-layout">
+          <div class="svc-board reveal">
+            <div class="tabs" role="tablist" aria-label="Service categories" id="svc-tabs">
+              <span class="tab-ink" aria-hidden="true"></span>
+              <button type="button" role="tab" id="tab-hair" aria-controls="svc-panel" aria-selected="true" data-cat="hair" data-i18n="svc.cat.hair">Hair</button>
+              <button type="button" role="tab" id="tab-beard" aria-controls="svc-panel" aria-selected="false" data-cat="beard" tabindex="-1" data-i18n="svc.cat.beard">Beard &amp; Shave</button>
+              <button type="button" role="tab" id="tab-extras" aria-controls="svc-panel" aria-selected="false" data-cat="extras" tabindex="-1" data-i18n="svc.cat.extras">Grooming extras</button>
+            </div>
+            <ul class="svc-list" id="svc-panel" role="tabpanel" aria-labelledby="tab-hair"></ul>
+          </div>
+          <figure class="svc-photo reveal" aria-hidden="true"><img alt="" loading="lazy" decoding="async"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PACKAGES ============ -->
+    <section class="section packages" id="packages" aria-labelledby="packages-title">
+      <div class="packages-bg" aria-hidden="true"><img src="https://images.unsplash.com/photo-1773904215697-e6c21fc27ac2?auto=format&fit=crop&w=1800&q=70" alt="" loading="lazy" decoding="async"></div>
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="pk.eyebrow">Packages</p>
+          <h2 id="packages-title" data-i18n="pk.title">Do more, <em>pay less.</em></h2>
+          <p class="section-lead" data-i18n="pk.lead">Our favourite combinations, priced lower than booking each service on its own.</p>
+        </header>
+        <div class="pk-grid" id="pk-grid"></div>
+        <div class="pk-extra">
+          <article class="pk-wide reveal">
+            <div>
+              <h3 data-i18n="pk.club.title">The Brass Club</h3>
+              <p data-i18n="pk.club.text">Two haircuts a month, priority booking on Fridays and Saturdays, and 10% off all products.</p>
+            </div>
+            <p class="pk-wide-price" data-i18n="pk.club.price">€38<small>/month</small></p>
+            <a class="btn btn-ghost btn-sm" href="#visit" data-i18n="pk.club.cta">Ask in the shop</a>
+          </article>
+          <article class="pk-wide reveal">
+            <div>
+              <h3 data-i18n="pk.groom.title">The Groom</h3>
+              <p data-i18n="pk.groom.text">The groom and up to four groomsmen, on the morning of the wedding, at the shop or at your venue.</p>
+            </div>
+            <p class="pk-wide-price" data-i18n="pk.groom.price">from €180</p>
+            <a class="btn btn-ghost btn-sm" data-tel href="tel:+35724000247" data-i18n="pk.groom.cta">Call for a quote</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BARBERS ============ -->
+    <section class="section barbers" id="barbers" aria-labelledby="barbers-title">
+      <div class="container">
+        <header class="section-head split reveal">
+          <div>
+            <p class="eyebrow" data-i18n="team.eyebrow">The barbers</p>
+            <h2 id="barbers-title" data-i18n="team.title">Four chairs. <em>Four specialists.</em></h2>
+          </div>
+          <p class="section-lead" data-i18n="team.lead">Choose your barber when you book, or pick “Any barber” for the earliest slot.</p>
+        </header>
+        <div class="team-grid" id="team-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ THE KIT (equipment) ============ -->
+    <section class="kit" id="kit" aria-labelledby="kit-title">
+      <div class="kit-pin">
+        <div class="container kit-head">
+          <p class="eyebrow" data-i18n="kit.eyebrow">Tools of the trade</p>
+          <h2 id="kit-title" data-i18n="kit.title">The kit <em>behind the cut.</em></h2>
+          <p class="section-lead" data-i18n="kit.lead">Good tools don't make a good barber, but a good barber never works without them.</p>
+          <p class="kit-hygiene"><svg class="ico"><use href="#i-shield"/></svg><span data-i18n="kit.hygiene">Every tool is cleaned and sterilised between clients, and every shave uses a new blade.</span></p>
+        </div>
+        <div class="kit-viewport">
+          <div class="kit-track" id="kit-track"></div>
+        </div>
+        <div class="container kit-foot">
+          <span class="kit-progress" aria-hidden="true"><i></i></span>
+          <span class="kit-drag" data-i18n="kit.drag">Drag or scroll</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <section class="section gallery" id="gallery" aria-labelledby="gallery-title">
+      <div class="container">
+        <header class="section-head split reveal">
+          <div>
+            <p class="eyebrow" data-i18n="gal.eyebrow">Fresh from the chair</p>
+            <h2 id="gallery-title" data-i18n="gal.title">Recent work</h2>
+          </div>
+          <a class="link-arrow" href="#" data-ig><svg class="ico"><use href="#i-ig"/></svg><span data-i18n="gal.more">More on Instagram</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+        </header>
+        <div class="gal-grid" id="gal-grid"></div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS ============ -->
+    <section class="section reviews paper" id="reviews" aria-labelledby="reviews-title">
+      <div class="container rev-layout">
+        <div class="rev-summary reveal">
+          <p class="eyebrow" data-i18n="rev.eyebrow">Reviews</p>
+          <h2 id="reviews-title" data-i18n="rev.title">What our clients say</h2>
+          <p class="rev-score"><span class="big">4.9</span><span class="stars" aria-hidden="true"><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg><svg class="ico"><use href="#i-star"/></svg></span></p>
+          <p class="rev-meta"><strong data-i18n="rev.score">4.9 out of 5</strong> <span data-i18n="rev.count">from 640+ Google reviews</span></p>
+          <div class="rev-nav">
+            <button type="button" class="round-btn" id="rev-prev" data-i18n-label="rev.prev" aria-label="Previous review"><svg class="ico"><use href="#i-left"/></svg></button>
+            <span class="rev-count" id="rev-count" aria-live="polite">1 / 5</span>
+            <button type="button" class="round-btn" id="rev-next" data-i18n-label="rev.next" aria-label="Next review"><svg class="ico"><use href="#i-right"/></svg></button>
+          </div>
+        </div>
+        <div class="rev-stage reveal">
+          <div class="rev-track" id="rev-track"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOOKING ============ -->
+    <section class="section book" id="book" aria-labelledby="book-title">
+      <div class="book-pole" aria-hidden="true"><span></span></div>
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="book.eyebrow">Online booking</p>
+          <h2 id="book-title" data-i18n="book.title">Book your chair</h2>
+          <p class="section-lead" data-i18n="book.lead">Pick a service, a barber and a time. It takes less than a minute, and you pay in the shop.</p>
+        </header>
+
+        <div class="booker reveal" id="booker">
+          <div class="booker-main">
+            <ol class="steps" id="book-steps">
+              <li class="is-current" data-step="1"><button type="button"><b>1</b><span data-i18n="book.s1">Service</span></button></li>
+              <li data-step="2"><button type="button" disabled><b>2</b><span data-i18n="book.s2">Barber</span></button></li>
+              <li data-step="3"><button type="button" disabled><b>3</b><span data-i18n="book.s3">Date &amp; time</span></button></li>
+              <li data-step="4"><button type="button" disabled><b>4</b><span data-i18n="book.s4">Your details</span></button></li>
+              <li class="steps-bar" aria-hidden="true"><i></i></li>
+            </ol>
+
+            <div class="panes">
+              <!-- 1 · services -->
+              <div class="pane is-active" data-pane="1">
+                <h3 class="pane-title" data-i18n="book.pick">What are you booking?</h3>
+                <p class="pane-hint" data-i18n="book.pickHint">Choose one or more. Packages already include several services.</p>
+                <div class="pick-groups" id="pick-services"></div>
+              </div>
+
+              <!-- 2 · barber -->
+              <div class="pane" data-pane="2">
+                <h3 class="pane-title" data-i18n="book.whoTitle">Who would you like?</h3>
+                <div class="pick-barbers" id="pick-barbers"></div>
+              </div>
+
+              <!-- 3 · date & time -->
+              <div class="pane" data-pane="3">
+                <h3 class="pane-title" data-i18n="book.whenTitle">When suits you?</h3>
+                <div class="dates-wrap">
+                  <button type="button" class="round-btn dates-btn" data-dir="-1" aria-label="Earlier dates"><svg class="ico"><use href="#i-left"/></svg></button>
+                  <div class="dates" id="pick-dates" role="listbox" aria-label="Date"></div>
+                  <button type="button" class="round-btn dates-btn" data-dir="1" aria-label="Later dates"><svg class="ico"><use href="#i-right"/></svg></button>
+                </div>
+                <div class="times" id="pick-times"></div>
+              </div>
+
+              <!-- 4 · details -->
+              <div class="pane" data-pane="4">
+                <h3 class="pane-title" data-i18n="book.detailsTitle">Almost done</h3>
+                <form class="details" id="book-form" novalidate>
+                  <div class="field">
+                    <input id="bk-name" name="name" type="text" autocomplete="name" placeholder=" " required>
+                    <label for="bk-name" data-i18n="book.name">Full name</label>
+                  </div>
+                  <div class="field">
+                    <input id="bk-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " required>
+                    <label for="bk-phone" data-i18n="book.phone">Mobile number</label>
+                  </div>
+                  <div class="field field-wide">
+                    <input id="bk-email" name="email" type="email" autocomplete="email" placeholder=" ">
+                    <label for="bk-email" data-i18n="book.email">Email (optional)</label>
+                  </div>
+                  <div class="field field-wide">
+                    <textarea id="bk-notes" name="notes" rows="2" placeholder=" " data-i18n-ph="book.notesPh"></textarea>
+                    <label for="bk-notes" data-i18n="book.notes">Anything we should know? (optional)</label>
+                  </div>
+                  <label class="check field-wide"><input type="checkbox" id="bk-remind" checked><span class="box"><svg class="ico"><use href="#i-check"/></svg></span><span data-i18n="book.remind">Send me a reminder the day before</span></label>
+                </form>
+              </div>
+            </div>
+
+            <p class="book-error" id="book-error" role="alert"></p>
+            <div class="book-actions">
+              <button type="button" class="btn btn-ghost" id="book-back"><svg class="ico flip"><use href="#i-arrow"/></svg><span data-i18n="book.back">Back</span></button>
+              <button type="button" class="btn btn-brass" id="book-next"><span data-i18n="book.next">Continue</span><svg class="ico"><use href="#i-arrow"/></svg></button>
+            </div>
+          </div>
+
+          <aside class="ticket" aria-labelledby="ticket-title">
+            <div class="ticket-head">
+              <svg class="ticket-mark" aria-hidden="true"><use href="#i-mark"/></svg>
+              <h3 id="ticket-title" data-i18n="book.summary">Your booking</h3>
+            </div>
+            <ul class="ticket-items" id="ticket-items"></ul>
+            <dl class="ticket-meta" id="ticket-meta"></dl>
+            <div class="ticket-total">
+              <span data-i18n="book.total">Total</span>
+              <strong id="ticket-total">€0</strong>
+            </div>
+            <p class="ticket-note" data-i18n="book.payNote">Pay in the shop. Free cancellation up to 3 hours before.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GIFT CARDS ============ -->
+    <section class="gift" aria-labelledby="gift-title">
+      <div class="container gift-inner reveal">
+        <span class="gift-ico"><svg class="ico"><use href="#i-gift"/></svg></span>
+        <div>
+          <h2 id="gift-title" data-i18n="gift.title">Give a fresh cut.</h2>
+          <p data-i18n="gift.text">Gift cards from €20, for any service or package. Buy them in the shop or call us.</p>
+        </div>
+        <a class="btn btn-brass" data-tel href="tel:+35724000247"><svg class="ico"><use href="#i-phone"/></svg><span data-i18n="gift.cta">Call to order</span></a>
+      </div>
+    </section>
+
+    <!-- ============ VISIT ============ -->
+    <section class="section visit" id="visit" aria-labelledby="visit-title">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="visit.eyebrow">Visit us</p>
+          <h2 id="visit-title" data-i18n="visit.title">Find the shop</h2>
+        </header>
+        <div class="visit-grid">
+          <div class="visit-card reveal">
+            <h3><svg class="ico"><use href="#i-clock"/></svg><span data-i18n="visit.hours">Opening hours</span></h3>
+            <p class="status-pill on-dark" id="open-status-2"><span class="dot"></span><span class="status-text">&nbsp;</span></p>
+            <table class="hours" id="hours-table"><tbody></tbody></table>
+          </div>
+          <div class="visit-card reveal">
+            <h3><svg class="ico"><use href="#i-pin"/></svg><span data-i18n="visit.address">Address</span></h3>
+            <p class="addr" data-i18n="visit.addr">Zinonos Kitieos 58<br>Larnaca 6022, Cyprus</p>
+            <p class="visit-note"><svg class="ico"><use href="#i-car"/></svg><span data-i18n="visit.parking">Free parking 100 m away after 17:00</span></p>
+            <a class="link-arrow" id="directions" href="https://www.google.com/maps/search/?api=1&amp;query=Zinonos+Kitieos+Street+Larnaca" target="_blank" rel="noopener"><span data-i18n="visit.directions">Get directions</span><svg class="ico"><use href="#i-arrow"/></svg></a>
+            <h3 class="mt"><svg class="ico"><use href="#i-phone"/></svg><span data-i18n="visit.contact">Contact</span></h3>
+            <ul class="contact-list">
+              <li><a data-tel href="tel:+35724000247">+357 24 000 247</a></li>
+              <li><a href="mailto:hello@brassandblade.cy">hello@brassandblade.cy</a></li>
+              <li><a href="#" data-ig>@brassandblade.cy</a></li>
+            </ul>
+          </div>
+          <div class="visit-map reveal">
+            <iframe title="Map: Brass &amp; Blade, Larnaca" loading="lazy" referrerpolicy="no-referrer-when-downgrade" data-src="https://www.google.com/maps?q=Zinonos+Kitieos+Street,+Larnaca,+Cyprus&amp;z=16&amp;output=embed"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="section faq paper" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-grid">
+        <header class="section-head reveal">
+          <p class="eyebrow" data-i18n="faq.eyebrow">FAQ</p>
+          <h2 id="faq-title" data-i18n="faq.title">Good to know</h2>
+        </header>
+        <div class="faq-list" id="faq-list"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo" aria-label="Brass &amp; Blade, home">
+          <svg class="logo-mark" aria-hidden="true"><use href="#i-mark"/></svg>
+          <span class="logo-text"><span class="logo-name">Brass <em>&amp;</em> Blade</span><small data-i18n="brand.sub">Barbershop · Larnaca</small></span>
+        </a>
+        <p class="footer-tag" data-i18n="footer.tag">Classic cuts, hot towel shaves and beard work in the heart of Larnaca.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#services" data-i18n="nav.services">Services</a></li>
+        <li><a href="#packages" data-i18n="nav.packages">Packages</a></li>
+        <li><a href="#barbers" data-i18n="nav.barbers">Barbers</a></li>
+        <li><a href="#kit" data-i18n="nav.kit">The Kit</a></li>
+        <li><a href="#book" data-i18n="nav.book">Book now</a></li>
+      </ul>
+      <ul class="footer-links">
+        <li><a href="#" data-ig>Instagram</a></li>
+        <li><a href="#" data-ig>Facebook</a></li>
+        <li><a href="#" data-ig>TikTok</a></li>
+      </ul>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">Brass <em>&amp;</em> Blade</div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Brass &amp; Blade. <span data-i18n="footer.rights">All rights reserved.</span></p>
+      <p class="credit"><span data-i18n="footer.credit">Website by</span> <button type="button" class="credit-link" data-hire>Aristeidis Kamaritis</button></p>
+      <button type="button" class="to-top" id="to-top"><span data-i18n="footer.top">Back to top</span> <span aria-hidden="true">↑</span></button>
+    </div>
+  </footer>
+
+  <!-- Phone: sticky booking bar -->
+  <div class="mbar" id="mbar">
+    <a class="btn btn-brass" href="#book"><svg class="ico"><use href="#i-cal"/></svg><span data-i18n="mbar.book">Book a chair</span></a>
+    <a class="mbar-call" data-tel href="tel:+35724000247" aria-label="Call"><svg class="ico"><use href="#i-phone"/></svg></a>
+  </div>
+
+  <!-- "Want a site like this?" — designer contact -->
+  <button type="button" class="btn hire-fab" id="hire-fab" data-hire aria-haspopup="dialog" aria-controls="hire-panel" data-i18n="hire.fab">Want a site like this?</button>
+
+  <div class="hire" id="hire-panel" role="dialog" aria-modal="true" aria-labelledby="hire-title" hidden>
+    <div class="hire-backdrop"></div>
+    <div class="hire-card">
+      <button type="button" class="hire-close" aria-label="Close"><svg class="ico"><use href="#i-close"/></svg></button>
+      <div class="hire-head">
+        <span class="hire-avatar" aria-hidden="true">AK</span>
+        <div>
+          <p class="hire-eyebrow" data-i18n="hire.eyebrow">Freelance web designer · Cyprus</p>
+          <h3 id="hire-title">Aristeidis Kamaritis</h3>
+        </div>
+      </div>
+      <p class="hire-text" data-i18n="hire.text">I designed and built this site. If you'd like something similar for your business, get in touch and I'll reply within a day.</p>
+      <ul class="hire-list">
+        <li>
+          <a class="hire-item" href="https://akwebdev.com/" target="_blank" rel="noopener">
+            <span class="hire-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 9h18" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            <span><strong data-i18n="hire.site">See my work and prices</strong><small>akwebdev.com</small></span>
+            <span class="hire-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="hire-item" href="tel:+35796272170">
+            <span class="hire-ico"><svg class="ico"><use href="#i-phone"/></svg></span>
+            <span><strong>+357 96 272170</strong><small data-i18n="hire.callHint">Call me</small></span>
+            <span class="hire-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="hire-item" id="hire-email" href="mailto:aristidiskamaritis@gmail.com">
+            <span class="hire-ico"><svg class="ico"><use href="#i-mail"/></svg></span>
+            <span><strong>aristidiskamaritis@gmail.com</strong><small data-i18n="hire.emailHint">Send me an email</small></span>
+            <span class="hire-arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ul>
+      <p class="hire-foot" data-i18n="hire.foot">Brass &amp; Blade is a demo barbershop created to showcase my work.</p>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <div class="lb-backdrop"></div>
+    <button class="lb-close" type="button" data-i18n-label="lb.close" aria-label="Close"><svg class="ico"><use href="#i-close"/></svg></button>
+    <button class="lb-nav lb-prev" type="button" data-i18n-label="lb.prev" aria-label="Previous image"><svg class="ico"><use href="#i-left"/></svg></button>
+    <figure class="lb-figure"><div class="lb-frame"><img alt=""></div><figcaption></figcaption></figure>
+    <button class="lb-nav lb-next" type="button" data-i18n-label="lb.next" aria-label="Next image"><svg class="ico"><use href="#i-right"/></svg></button>
+  </div>
+
+  <!-- Booking confirmation -->
+  <div class="modal" id="done-modal" role="dialog" aria-modal="true" aria-labelledby="done-title" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="modal-card">
+      <svg class="modal-check" viewBox="0 0 64 64" aria-hidden="true">
+        <circle cx="32" cy="32" r="29" fill="none" stroke="currentColor" stroke-width="2"/>
+        <path d="M20 33l8 8 16-17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3 id="done-title" data-i18n="done.title">You're booked in!</h3>
+      <p id="done-text"></p>
+      <p class="modal-demo" data-i18n="done.demo">This is a demo website, so no booking was sent.</p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="done-ics"><svg class="ico"><use href="#i-cal"/></svg><span data-i18n="done.ics">Add to calendar</span></button>
+        <button type="button" class="btn btn-brass" id="done-close" data-i18n="done.close">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+  <script src="js/data.js?v=1" defer></script>
+  <script src="js/main.js?v=1" defer></script>
+</body>
+</html>
