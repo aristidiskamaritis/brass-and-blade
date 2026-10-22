@@ -2,7 +2,7 @@
    Brass & Blade Barbershop — interactions & motion
    Content comes from data.js. Entrances and reveals are CSS (so the page
    never waits on a library); GSAP + ScrollTrigger + Lenis add smooth scrolling,
-   parallax and the pinned "kit" row when they load and motion is allowed.
+   parallax and the scroll-linked fades when they load and motion is allowed.
    ========================================================= */
 (() => {
   window.__bbReady = true;
@@ -273,7 +273,7 @@
 
   function renderKit() {
     $("#kit-track").innerHTML = KIT.map((k, i) => `
-      <article class="kit-card">
+      <article class="kit-card reveal">
         <figure><img src="${IMG(k.img, 800, 640)}" srcset="${IMG(k.img, 500, 400)} 500w, ${IMG(k.img, 800, 640)} 800w" sizes="(max-width: 680px) 80vw, 400px" width="800" height="640" alt="${esc(L(k.name))}" loading="lazy" decoding="async" draggable="false"></figure>
         <div class="kit-body">
           <span class="kit-num">${String(i + 1).padStart(2, "0")} / ${String(KIT.length).padStart(2, "0")}</span>
@@ -796,7 +796,7 @@
   function scrollToEl(el, offset = 0) {
     if (!el) return;
     const headerOffset = el.id === "home" ? 0 : -(header.offsetHeight - 6);
-    if (lenis) lenis.scrollTo(el, { offset: headerOffset + offset, duration: 1.1 });
+    if (lenis) lenis.scrollTo(el, { offset: headerOffset + offset, duration: 1, easing: (x) => 1 - Math.pow(1 - x, 4) });
     else window.scrollTo({ top: el.getBoundingClientRect().top + scrollY + headerOffset + offset, behavior: reduceMotion ? "auto" : "smooth" });
   }
   document.addEventListener("click", (e) => {
@@ -863,7 +863,7 @@
       if (!en.isIntersecting) return;
       const targets = en.target.matches(".reveal") ? [en.target] : $$(".clip-reveal", en.target);
       targets.forEach((el) => {
-        el.style.transitionDelay = `${Math.min(i++, 6) * 70}ms`;
+        el.style.transitionDelay = `${Math.min(i++, 5) * 60}ms`;
         el.classList.add("in");
         setTimeout(() => { el.style.transitionDelay = ""; }, 1400);
       });
@@ -894,30 +894,14 @@
   }
 
   /* =========================================================
-     Kit row: drag to scroll on any device; pinned + scrubbed on desktop
+     Kit: a grid on larger screens, a swipe row on phones (with a progress bar)
      ========================================================= */
-  const kitVp = $(".kit-viewport");
+  const kitRow = $("#kit-track");
   const kitBar = $(".kit-progress i");
-  function kitProgress(p) { kitBar.style.transform = `scaleX(${0.1 + 0.9 * Math.max(0, Math.min(1, p))})`; }
-  kitVp.addEventListener("scroll", () => {
-    if ($("#kit").classList.contains("pinned")) return;
-    kitProgress(kitVp.scrollLeft / Math.max(1, kitVp.scrollWidth - kitVp.clientWidth));
+  kitRow.addEventListener("scroll", () => {
+    const p = kitRow.scrollLeft / Math.max(1, kitRow.scrollWidth - kitRow.clientWidth);
+    kitBar.style.transform = `scaleX(${0.15 + 0.85 * Math.max(0, Math.min(1, p))})`;
   }, { passive: true });
-  (() => {
-    let down = false; let x0 = 0; let s0 = 0; let moved = false;
-    kitVp.addEventListener("pointerdown", (e) => {
-      if (e.pointerType !== "mouse" || $("#kit").classList.contains("pinned")) return;
-      down = true; moved = false; x0 = e.clientX; s0 = kitVp.scrollLeft;
-    });
-    addEventListener("pointermove", (e) => {
-      if (!down) return;
-      const dx = e.clientX - x0;
-      if (Math.abs(dx) > 4) { moved = true; kitVp.classList.add("dragging"); }
-      kitVp.scrollLeft = s0 - dx;
-    });
-    addEventListener("pointerup", () => { if (!down) return; down = false; kitVp.classList.remove("dragging"); });
-    kitVp.addEventListener("click", (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
-  })();
 
   /* =========================================================
      Map: load the iframe only when it comes near the screen
@@ -937,7 +921,8 @@
     html.classList.add("gsap-on");
 
     if (typeof window.Lenis !== "undefined") {
-      lenis = new Lenis({ duration: 1.05, easing: (x) => 1 - Math.pow(1 - x, 4), smoothWheel: true, wheelMultiplier: 1.05, touchMultiplier: 1.4 });
+      // lerp glides toward the target every frame: smooth, but it settles quickly
+      lenis = new Lenis({ lerp: 0.12, smoothWheel: true, wheelMultiplier: 1, touchMultiplier: 1.3 });
       lenis.on("scroll", ScrollTrigger.update);
       gsap.ticker.add((time) => lenis.raf(time * 1000));
       gsap.ticker.lagSmoothing(0);
@@ -945,33 +930,18 @@
     }
 
     // Hero: the room drifts and darkens as you scroll away
-    gsap.to(".hero-media", { yPercent: 18, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
+    gsap.to(".hero-media", { yPercent: 18, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.6 } });
     const mm = gsap.matchMedia();
     mm.add("(min-width: 961px)", () => {
-      gsap.to(".hero-content", { y: -60, opacity: 0.15, ease: "none", scrollTrigger: { trigger: ".hero", start: "40% top", end: "bottom top", scrub: true } });
+      gsap.to(".hero-content", { y: -60, opacity: 0.15, ease: "none", scrollTrigger: { trigger: ".hero", start: "40% top", end: "bottom top", scrub: 0.6 } });
 
       // About: the two photos move at different speeds
-      gsap.fromTo(".about-img.a2", { y: 60 }, { y: -40, ease: "none", scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: true } });
-      gsap.fromTo(".about-img.a1", { y: -20 }, { y: 30, ease: "none", scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: true } });
-
-      // Kit: pin the section and slide the cards sideways
-      const kit = $("#kit");
-      const track = $("#kit-track");
-      kit.classList.add("pinned");
-      // how far the row must travel so the last card ends one gutter from the right edge
-      const dist = () => Math.max(0, track.scrollWidth - (innerWidth - track.getBoundingClientRect().left) + (parseFloat(getComputedStyle(track).paddingRight) || 32));
-      const tween = gsap.to(track, {
-        x: () => -dist(), ease: "none",
-        scrollTrigger: {
-          trigger: kit, start: "top top", end: () => `+=${dist()}`, pin: true, scrub: 0.7, invalidateOnRefresh: true,
-          onUpdate: (self) => kitProgress(self.progress),
-        },
-      });
-      return () => { tween.scrollTrigger && tween.scrollTrigger.kill(); tween.kill(); gsap.set(track, { clearProps: "x" }); kit.classList.remove("pinned"); };
+      gsap.fromTo(".about-img.a2", { y: 60 }, { y: -40, ease: "none", scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: 0.6 } });
+      gsap.fromTo(".about-img.a1", { y: -20 }, { y: 30, ease: "none", scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: 0.6 } });
     });
 
-    gsap.fromTo(".packages-bg img", { yPercent: -10 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: ".packages", start: "top bottom", end: "bottom top", scrub: true } });
-    gsap.fromTo(".footer-wordmark", { yPercent: 40, opacity: 0.2 }, { yPercent: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: ".site-footer", start: "top bottom", end: "bottom bottom", scrub: true } });
+    gsap.fromTo(".packages-bg img", { yPercent: -10 }, { yPercent: 0, ease: "none", scrollTrigger: { trigger: ".packages", start: "top bottom", end: "bottom top", scrub: 0.6 } });
+    gsap.fromTo(".footer-wordmark", { yPercent: 40, opacity: 0.2 }, { yPercent: 0, opacity: 1, ease: "none", scrollTrigger: { trigger: ".site-footer", start: "top bottom", end: "bottom bottom", scrub: 0.6 } });
 
     // Magnetic main buttons (mouse only)
     if (finePointer) {

@@ -124,7 +124,7 @@ const BARBERS = [
 
 /* Equipment / "the kit" */
 const KIT = [
-  { img: "1621645582931-d1d3e6564943",
+  { img: "1512690459411-b9245aed614b",
     name: { en: "Restored hydraulic chairs", el: "Ανακαινισμένες υδραυλικές καρέκλες" },
     desc: { en: "Four 1960s barber chairs, rebuilt with new leather. They recline fully for shaves.", el: "Τέσσερις καρέκλες κουρείου του '60, με καινούργιο δέρμα. Γέρνουν τελείως για το ξύρισμα." } },
   { img: "1524230616393-d6229fcd2eff",
@@ -273,7 +273,7 @@ const I18N = {
     "kit.title": "The kit <em>behind the cut.</em>",
     "kit.lead": "Good tools don't make a good barber, but a good barber never works without them.",
     "kit.hygiene": "Every tool is cleaned and sterilised between clients, and every shave uses a new blade.",
-    "kit.drag": "Drag or scroll",
+    "kit.drag": "Swipe for more",
 
     "gal.eyebrow": "Fresh from the chair",
     "gal.title": "Recent work",
@@ -335,11 +335,7 @@ const I18N = {
     "done.text": "See you on <strong>{date}</strong> at <strong>{time}</strong> with <strong>{barber}</strong>.",
     "done.demo": "This is a demo website, so no booking was sent. On a real site, the barber and the client would both get a confirmation straight away.",
     "done.ics": "Add to calendar",
-    "done.close": "Done",
-
-    "gift.title": "Give a fresh cut.",
-    "gift.text": "Gift cards from €20, for any service or package. Buy them in the shop or call us.",
-    "gift.cta": "Call to order",
+    "done.close": "Done",
 
     "visit.eyebrow": "Visit us",
     "visit.title": "Find the shop",
@@ -354,6 +350,10 @@ const I18N = {
 
     "faq.eyebrow": "FAQ",
     "faq.title": "Good to know",
+    "faq.help.title": "Still have a question?",
+    "faq.help.text": "Call or email us and we'll get back to you the same day.",
+    "faq.help.call": "Call us",
+    "faq.help.email": "Email",
 
     "footer.tag": "Classic cuts, hot towel shaves and beard work in the heart of Larnaca.",
     "footer.rights": "All rights reserved.",
@@ -467,7 +467,7 @@ const I18N = {
     "kit.title": "Ο εξοπλισμός <em>πίσω από το κούρεμα.</em>",
     "kit.lead": "Τα καλά εργαλεία δεν κάνουν τον καλό κουρέα, αλλά ένας καλός κουρέας δεν δουλεύει ποτέ χωρίς αυτά.",
     "kit.hygiene": "Κάθε εργαλείο καθαρίζεται και αποστειρώνεται μετά από κάθε πελάτη, και κάθε ξύρισμα γίνεται με καινούργια λεπίδα.",
-    "kit.drag": "Σύρετε ή κάντε κύλιση",
+    "kit.drag": "Σύρετε για περισσότερα",
 
     "gal.eyebrow": "Φρέσκα από την καρέκλα",
     "gal.title": "Πρόσφατες δουλειές",
@@ -529,11 +529,7 @@ const I18N = {
     "done.text": "Σας περιμένουμε <strong>{date}</strong> στις <strong>{time}</strong> με <strong>{barber}</strong>.",
     "done.demo": "Αυτή είναι demo ιστοσελίδα, οπότε δεν στάλθηκε κράτηση. Σε πραγματική ιστοσελίδα, ο κουρέας και ο πελάτης παίρνουν αμέσως επιβεβαίωση.",
     "done.ics": "Προσθήκη στο ημερολόγιο",
-    "done.close": "Τέλος",
-
-    "gift.title": "Χαρίστε ένα φρέσκο κούρεμα.",
-    "gift.text": "Δωροκάρτες από €20, για οποιαδήποτε υπηρεσία ή πακέτο. Στο μαγαζί ή με ένα τηλεφώνημα.",
-    "gift.cta": "Παραγγελία τηλεφωνικά",
+    "done.close": "Τέλος",
 
     "visit.eyebrow": "Επισκεφθείτε μας",
     "visit.title": "Πού θα μας βρείτε",
@@ -548,6 +544,10 @@ const I18N = {
 
     "faq.eyebrow": "Συχνές ερωτήσεις",
     "faq.title": "Καλό να ξέρετε",
+    "faq.help.title": "Έχετε κι άλλη ερώτηση;",
+    "faq.help.text": "Καλέστε μας ή στείλτε email και θα σας απαντήσουμε την ίδια μέρα.",
+    "faq.help.call": "Τηλεφωνήστε μας",
+    "faq.help.email": "Email",
 
     "footer.tag": "Κλασικά κουρέματα, ξύρισμα με ζεστή πετσέτα και περιποίηση γενειάδας στην καρδιά της Λάρνακας.",
     "footer.rights": "Με την επιφύλαξη παντός δικαιώματος.",
